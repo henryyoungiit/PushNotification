@@ -117,6 +117,9 @@ public class CordovaGCMBroadcastReceiver extends WakefulBroadcastReceiver {
 		String message = extras.getString("message");
 		if (message != null) {
 			mBuilder.setContentText(message);
+		        if (Build.VERSION.SDK_INT > 16) {
+		            mBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(message));
+		        }
 		} else {
 			mBuilder.setContentText("<missing message content>");
 		}
